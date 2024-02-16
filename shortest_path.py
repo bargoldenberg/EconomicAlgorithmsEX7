@@ -45,7 +45,7 @@ def vcg_cheapest_path(G, source, target):
     edge ( 1 , 2 ) cost -2
     edge ( 1 , 3 ) cost 0
     edge ( 2 , 3 ) cost -3
-    
+
     >>> G = nx.complete_graph(3)
     >>> G[0][1]['weight'] = 3
     >>> G[0][2]['weight'] = 5
@@ -63,5 +63,4 @@ def vcg_cheapest_path(G, source, target):
         print('edge (', edge[0], ",", edge[1], ")", "cost", cost)
 
 if __name__ == "__main__":
-    G = nx.complete_graph(4)
     doctest.testmod()
