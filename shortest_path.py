@@ -34,6 +34,14 @@ def vcg_cheapest_path(G, source, target):
     edge ( 1 , 2 ) cost -2
     edge ( 1 , 3 ) cost 0
     edge ( 2 , 3 ) cost -3
+    >>> G = nx.complete_graph(3)
+    >>> G[0][1]['weight'] = 3
+    >>> G[0][2]['weight'] = 5
+    >>> G[1][2]['weight'] = 1
+    >>> vcg_cheapest_path(G, 0, 2)
+    edge ( 0 , 1 ) cost -4
+    edge ( 0 , 2 ) cost 0
+    edge ( 1 , 2 ) cost -2
     """
     path_with_weights = get_path(G, source, target)
     edges = G.edges()
