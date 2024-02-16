@@ -17,7 +17,7 @@ def get_sum_without_person(path, source, target):
     for edge in path:
         if edge[0] == source and edge[1] == target:
             continue
-        ans += edge[2]
+        ans += edge[2] # edge[2] is the weight of the edge. 
     return ans
 
 def remove_edge(G, edge):
