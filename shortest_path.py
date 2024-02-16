@@ -1,6 +1,8 @@
 import networkx as nx
 import doctest
 
+#IMPLEMENTED BY: BAR GOLDENBERG
+
 def get_path(G, source, target):
     path = nx.shortest_path(G, source, target, weight='weight')
     path_with_weights = [(path[i], path[i+1], G[i][i+1]['weight']) for i in range(len(path)-1)]
