@@ -1,7 +1,7 @@
 import networkx as nx
 import doctest
 
-#IMPLEMENTED BY: BAR GOLDENBERG
+# IMPLEMENTED BY: BAR GOLDENBERG
 
 def get_path(G, source, target):
     path = nx.shortest_path(G, source, target, weight='weight')
@@ -13,12 +13,12 @@ def get_path_cost(G, source, target):
     return path_cost
 
 def get_sum_without_person(path, source, target):
-    ans = 0
+    total_weight = 0
     for edge in path:
         if edge[0] == source and edge[1] == target:
             continue
-        ans += edge[2] # edge[2] is the weight of the edge. 
-    return ans
+        total_weight += edge[2] # edge[2] is the weight of the edge. 
+    return total_weight
 
 def remove_edge(G, edge):
     G_without_edge = G.copy(as_view=False)
