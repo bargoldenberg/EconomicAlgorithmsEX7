@@ -20,6 +20,15 @@ def get_sum_without_person(path, source, target):
         ans += edge[2]
     return ans
 
+def remove_edge(G, edge):
+    G_without_edge = G.copy(as_view=False)
+    G_without_edge.remove_edge(edge[0], edge[1])
+    return G_without_edge
+
+def calulate_cost(G, source, target, edge, path_with_weights):
+    path_cost_without_edge = get_path_cost(G, source, target)
+    return -(path_cost_without_edge - get_sum_without_person(path_with_weights, edge[0], edge[1]))
+    
 def vcg_cheapest_path(G, source, target):
     """
     >>> G = nx.complete_graph(4)
@@ -48,11 +57,10 @@ def vcg_cheapest_path(G, source, target):
     path_with_weights = get_path(G, source, target)
     edges = G.edges()
     for edge in edges:
-        G_without_edge = G.copy(as_view=False)
-        G_without_edge.remove_edge(edge[0], edge[1])
-        path_cost_without_edge = get_path_cost(G_without_edge, source, target)
-        final_cost = -(path_cost_without_edge - get_sum_without_person(path_with_weights, edge[0], edge[1]))
-        print('edge (', edge[0], ",", edge[1], ")", "cost", final_cost)
+        G_without_edge = remove_edge(G, edge)
+        cost = calulate_cost(G_without_edge, source, target, edge, path_with_weights)
+        print('edge (', edge[0], ",", edge[1], ")", "cost", cost)
+        
 if __name__ == "__main__":
     G = nx.complete_graph(4)
     doctest.testmod()
