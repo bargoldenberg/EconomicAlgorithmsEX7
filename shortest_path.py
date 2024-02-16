@@ -51,7 +51,8 @@ def vcg_cheapest_path(G, source, target):
         G_without_edge = G.copy(as_view=False)
         G_without_edge.remove_edge(edge[0], edge[1])
         path_cost_without_edge = get_path_cost(G_without_edge, source, target)
-        print('edge (', edge[0], ",", edge[1], ")", "cost", -(path_cost_without_edge - get_sum_without_person(path_with_weights, edge[0], edge[1])))
+        final_cost = -(path_cost_without_edge - get_sum_without_person(path_with_weights, edge[0], edge[1]))
+        print('edge (', edge[0], ",", edge[1], ")", "cost", final_cost)
 if __name__ == "__main__":
     G = nx.complete_graph(4)
     doctest.testmod()
